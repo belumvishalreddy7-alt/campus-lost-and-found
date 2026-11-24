@@ -5,7 +5,7 @@ require('dotenv').config();
 const config = {
   env: process.env.NODE_ENV || 'development',
   port: Number(process.env.PORT) || 5000,
-  mongoUri: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/campus_lost_found',
+ mongoUri: process.env.MONGO_URI,
   jwtSecret: process.env.JWT_SECRET || 'dev-only-insecure-secret-change-me',
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
   clientOrigins: (process.env.CLIENT_ORIGIN || 'http://localhost:5000')
