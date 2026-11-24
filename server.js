@@ -6,7 +6,17 @@ const store = require('./src/store');
 const { seedDatabase } = require('./src/utils/seedData');
 
 async function start() {
-  await store.connect(config.mongoUri);
+  if (!config.mongoUri) {
+  throw new Error('MONGO_URI is missing in Render Environment Variables');
+}
+
+console.log('[db] MongoDB URI configured:', {
+  present: true,
+  atlas: config.mongoUri.startsWith('mongodb+srv://'),
+  environment: config.env
+});
+
+await store.connect(config.mongoUri);
   // eslint-disable-next-line no-console
   console.log(`[db] connected using "${store.driver}" driver`);
 
