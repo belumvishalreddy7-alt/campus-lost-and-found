@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report an item — Campus Lost and Found Portal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">LF</span><span>Campus Lost &amp; Found<small>Sai University</small></span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/report.html">Report an item</a>
+        <a href="/dashboard.html" data-auth hidden>Dashboard</a>
+        <a href="/admin.html" data-admin hidden>Admin</a>
+        <span data-guest><a href="/login.html">Log in</a></span>
+        <a class="btn btn-primary btn-sm" href="/signup.html" data-guest>Sign up</a>
+        <span data-user-name hidden></span>
+        <button class="link-btn" id="logout-btn" data-auth hidden>Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" style="max-width:880px">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">New report</p>
+          <h1>Report a lost or found item</h1>
+          <p>Be specific — colour, brand, distinguishing marks and the exact place you last saw the item.</p>
+        </div>
+      </div>
+
+      <div id="form-alert"></div>
+
+      <form class="panel" id="report-form" novalidate>
+        <fieldset class="field" style="margin-bottom:1rem">
+          <legend style="font-weight:600;font-size:.88rem;margin-bottom:.4rem">What are you reporting?</legend>
+          <div class="radio-row">
+            <label class="radio-card">
+              <input type="radio" name="type" value="lost" checked>
+              <span><strong>I lost an item</strong><span>Lost report</span></span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="type" value="found">
+              <span><strong>I found an item</strong><span>Found report</span></span>
+            </label>
+          </div>
+          <div class="field-error" data-error-for="type"></div>
+        </fieldset>
+
+        <div class="form-grid">
+          <div class="field span-2">
+            <label for="title">Item name / title</label>
+            <input type="text" id="title" name="title" required minlength="3" maxlength="120" placeholder="Black leather wallet with student ID">
+            <div class="field-error" data-error-for="title"></div>
+          </div>
+
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="">Select a category</option>
+            </select>
+            <div class="field-error" data-error-for="category"></div>
+          </div>
+
+          <div class="field">
+            <label for="location">Location</label>
+            <select id="location" name="location" required>
+              <option value="">Select the campus area</option>
+            </select>
+            <div class="field-error" data-error-for="location"></div>
+          </div>
+
+          <div class="field">
+            <label for="date">Date lost / found</label>
+            <input type="date" id="date" name="date" required>
+            <div class="field-error" data-error-for="date"></div>
+          </div>
+
+          <div class="field">
+            <label for="image">Photo (optional)</label>
+            <input type="file" id="image" name="image" accept="image/png,image/jpeg,image/webp,image/gif">
+            <span class="hint">JPG, PNG, WEBP or GIF up to 2 MB.</span>
+            <div class="field-error" data-error-for="image"></div>
+          </div>
+
+          <div class="field span-2">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" required minlength="10" maxlength="2000" placeholder="Describe the item: colour, brand, contents, any marks or stickers that would identify it."></textarea>
+            <span class="hint">At least 10 characters. Do not list private details such as full card numbers.</span>
+            <div class="field-error" data-error-for="description"></div>
+          </div>
+
+          <div class="form-actions span-2">
+            <button class="btn btn-primary" type="submit" id="submit-btn">Submit report</button>
+            <a class="btn btn-outline" href="/">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Campus Lost and Found Portal — Sai University</span></div></footer>
+  <script type="module" src="/js/report.js"></script>
+</body>
+</html>

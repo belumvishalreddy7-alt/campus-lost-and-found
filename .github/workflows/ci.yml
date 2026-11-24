@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    name: API tests (Node 20)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run the automated API suite (in-memory driver, no database needed)
+        run: npm run test:offline
+        env:
+          NODE_ENV: test
+          DB_DRIVER: memory
+          JWT_SECRET: ci-test-secret-not-used-in-production
+
+      - name: Replay the Postman collection against the app
+        run: npm run test:collection
+        env:
+          NODE_ENV: test
+          DB_DRIVER: memory
+          JWT_SECRET: ci-test-secret-not-used-in-production
+
+  smoke:
+    name: Server boots and serves pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start the app on the offline driver and probe the endpoints
+        run: |
+          DB_DRIVER=memory JWT_SECRET=ci-test-secret NODE_ENV=test PORT=5055 node server.js &
+          SERVER_PID=$!
+          for i in $(seq 1 30); do
+            if curl -sf http://127.0.0.1:5055/api/health > /dev/null; then break; fi
+            sleep 1
+          done
+          echo "--- health ---"
+          curl -sf http://127.0.0.1:5055/api/health
+          echo "--- listings ---"
+          curl -sf "http://127.0.0.1:5055/api/items?limit=2" | head -c 400
+          echo
+          echo "--- home page ---"
+          curl -sf -o /dev/null -w "%{http_code}\n" http://127.0.0.1:5055/
+          kill $SERVER_PID

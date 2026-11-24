@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Item details — Campus Lost and Found Portal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">LF</span><span>Campus Lost &amp; Found<small>Sai University</small></span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/report.html">Report an item</a>
+        <a href="/dashboard.html" data-auth hidden>Dashboard</a>
+        <a href="/admin.html" data-admin hidden>Admin</a>
+        <span data-guest><a href="/login.html">Log in</a></span>
+        <a class="btn btn-primary btn-sm" href="/signup.html" data-guest>Sign up</a>
+        <span data-user-name hidden></span>
+        <button class="link-btn" id="logout-btn" data-auth hidden>Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <p style="margin-bottom:1rem"><a href="/">← Back to all listings</a></p>
+      <div id="detail-root">
+        <div class="skeleton" style="height:320px"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Campus Lost and Found Portal — Sai University</span></div></footer>
+  <script type="module" src="/js/item.js"></script>
+</body>
+</html>

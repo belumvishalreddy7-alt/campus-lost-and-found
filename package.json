@@ -1,0 +1,45 @@
+{
+  "name": "campus-lost-and-found-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Campus Lost and Found Portal - report lost/found items, search, claim and recover. Express + MongoDB (Mongoose) REST API with a responsive ES6 frontend.",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node src/utils/seed.js",
+    "test": "node --test tests/",
+    "test:offline": "DB_DRIVER=memory node --test tests/",
+    "test:collection": "node scripts/run-collection.js"
+  },
+  "keywords": [
+    "lost-and-found",
+    "express",
+    "mongodb",
+    "mongoose",
+    "jwt",
+    "rest-api"
+  ],
+  "author": "Belum Vishal Reddy",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.0",
+    "morgan": "^1.10.0",
+    "multer": "^2.5.0"
+  },
+  "devDependencies": {
+    "chai": "^4.5.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
+  }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create account — Campus Lost and Found Portal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">LF</span><span>Campus Lost &amp; Found<small>Sai University</small></span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/report.html">Report an item</a>
+        <a href="/dashboard.html" data-auth hidden>Dashboard</a>
+        <a href="/admin.html" data-admin hidden>Admin</a>
+        <span data-guest><a href="/login.html">Log in</a></span>
+        <a class="btn btn-primary btn-sm" href="/signup.html" data-guest>Sign up</a>
+        <span data-user-name hidden></span>
+        <button class="link-btn" id="logout-btn" data-auth hidden>Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" style="max-width:560px">
+      <div class="panel">
+        <p class="eyebrow">Get started</p>
+        <h1>Create your account</h1>
+        <p>Registration is free for students, staff and faculty of the university.</p>
+        <div id="form-alert"></div>
+        <form id="signup-form" novalidate>
+          <div class="form-grid">
+            <div class="field span-2">
+              <label for="fullName">Full name</label>
+              <input type="text" id="fullName" name="fullName" autocomplete="name" maxlength="60" placeholder="Belum Vishal Reddy">
+              <div class="field-error" data-error-for="fullName"></div>
+            </div>
+            <div class="field">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" autocomplete="username" required minlength="3" maxlength="30" placeholder="vishal.reddy">
+              <div class="field-error" data-error-for="username"></div>
+            </div>
+            <div class="field">
+              <label for="email">Campus email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@campus.edu">
+              <div class="field-error" data-error-for="email"></div>
+            </div>
+            <div class="field span-2">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" autocomplete="new-password" required minlength="6">
+              <span class="hint">At least 6 characters. Stored as a bcrypt hash — never in plain text.</span>
+              <div class="field-error" data-error-for="password"></div>
+            </div>
+            <div class="form-actions span-2">
+              <button class="btn btn-primary" type="submit" id="submit-btn">Create account</button>
+              <a class="btn btn-outline" href="/login.html">I already have an account</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Campus Lost and Found Portal — Sai University</span></div></footer>
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

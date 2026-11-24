@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in — Campus Lost and Found Portal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">LF</span><span>Campus Lost &amp; Found<small>Sai University</small></span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/report.html">Report an item</a>
+        <a href="/dashboard.html" data-auth hidden>Dashboard</a>
+        <a href="/admin.html" data-admin hidden>Admin</a>
+        <span data-guest><a href="/login.html">Log in</a></span>
+        <a class="btn btn-primary btn-sm" href="/signup.html" data-guest>Sign up</a>
+        <span data-user-name hidden></span>
+        <button class="link-btn" id="logout-btn" data-auth hidden>Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" style="max-width:520px">
+      <div class="panel">
+        <p class="eyebrow">Welcome back</p>
+        <h1>Log in to your account</h1>
+        <p>Use your campus email to manage your reports and claims.</p>
+        <div id="form-alert"></div>
+        <form id="login-form" novalidate>
+          <div class="form-grid" style="grid-template-columns:1fr">
+            <div class="field">
+              <label for="email">Campus email or username</label>
+              <input type="text" id="email" name="email" autocomplete="username" required placeholder="you@campus.edu">
+              <div class="field-error" data-error-for="email"></div>
+            </div>
+            <div class="field">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" autocomplete="current-password" required minlength="6">
+              <div class="field-error" data-error-for="password"></div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary btn-block" type="submit" id="submit-btn">Log in</button>
+            </div>
+          </div>
+        </form>
+        <p style="margin:1rem 0 0;font-size:.9rem">New here? <a href="/signup.html">Create an account</a></p>
+        <div class="alert alert-info" style="margin-top:1rem">
+          <strong>Demo accounts</strong><br>
+          Admin — admin@campus.edu / Admin@123<br>
+          Student — belumvishalreddy7@gmail.com / Student@123
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Campus Lost and Found Portal — Sai University</span></div></footer>
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

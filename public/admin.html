@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin console — Campus Lost and Found Portal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">LF</span><span>Campus Lost &amp; Found<small>Sai University</small></span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/report.html">Report an item</a>
+        <a href="/dashboard.html" data-auth hidden>Dashboard</a>
+        <a href="/admin.html" data-admin hidden>Admin</a>
+        <span data-guest><a href="/login.html">Log in</a></span>
+        <a class="btn btn-primary btn-sm" href="/signup.html" data-guest>Sign up</a>
+        <span data-user-name hidden></span>
+        <button class="link-btn" id="logout-btn" data-auth hidden>Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Administration</p>
+          <h1>Admin console</h1>
+          <p>Campus-wide view of every listing, claim and account.</p>
+        </div>
+        <button class="btn btn-outline" id="refresh">Refresh data</button>
+      </div>
+
+      <div id="admin-alert"></div>
+      <div class="stat-grid" id="admin-stats"></div>
+
+      <div class="panel" style="margin-bottom:1.25rem">
+        <div class="panel-head"><h2>Listings by category</h2><small>Distribution of all reports</small></div>
+        <div class="bar-chart" id="category-chart"></div>
+      </div>
+
+      <div class="panel" style="margin-bottom:1.25rem">
+        <div class="panel-head"><h2>Most reported locations</h2><small>Top five campus areas</small></div>
+        <div class="bar-chart" id="location-chart"></div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" role="tab" data-tab="items" aria-selected="true">All listings</button>
+        <button class="tab" role="tab" data-tab="claims" aria-selected="false">All claims</button>
+        <button class="tab" role="tab" data-tab="users" aria-selected="false">Accounts</button>
+      </div>
+
+      <section id="panel-items" class="panel">
+        <div class="panel-head">
+          <h2>All listings</h2>
+          <div class="form-actions">
+            <input type="search" id="admin-search" placeholder="Search title, description, location" style="min-width:220px">
+            <select id="admin-type">
+              <option value="">All types</option>
+              <option value="lost">Lost</option>
+              <option value="found">Found</option>
+            </select>
+            <select id="admin-status">
+              <option value="">Any status</option>
+              <option value="open">Open</option>
+              <option value="claimed">Claimed</option>
+              <option value="returned">Returned</option>
+            </select>
+          </div>
+        </div>
+        <div id="admin-items-table"></div>
+      </section>
+
+      <section id="panel-claims" class="panel" hidden>
+        <div class="panel-head">
+          <h2>All claims</h2>
+          <select id="admin-claim-status">
+            <option value="">Any status</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        <div id="admin-claims-table"></div>
+      </section>
+
+      <section id="panel-users" class="panel" hidden>
+        <div class="panel-head"><h2>Registered accounts</h2></div>
+        <div id="admin-users-table"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Campus Lost and Found Portal — Sai University</span></div></footer>
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

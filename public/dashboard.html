@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My dashboard — Campus Lost and Found Portal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">LF</span><span>Campus Lost &amp; Found<small>Sai University</small></span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/report.html">Report an item</a>
+        <a href="/dashboard.html" data-auth hidden>Dashboard</a>
+        <a href="/admin.html" data-admin hidden>Admin</a>
+        <span data-guest><a href="/login.html">Log in</a></span>
+        <a class="btn btn-primary btn-sm" href="/signup.html" data-guest>Sign up</a>
+        <span data-user-name hidden></span>
+        <button class="link-btn" id="logout-btn" data-auth hidden>Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">My account</p>
+          <h1 id="welcome">Dashboard</h1>
+          <p id="welcome-sub">Your reports and claims in one place.</p>
+        </div>
+        <a class="btn btn-primary" href="/report.html">+ New report</a>
+      </div>
+
+      <div class="stat-grid" id="user-stats"></div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" role="tab" data-tab="listings" aria-selected="true">My listings</button>
+        <button class="tab" role="tab" data-tab="claims-made" aria-selected="false">Claims I made</button>
+        <button class="tab" role="tab" data-tab="claims-received" aria-selected="false">Claims on my items</button>
+      </div>
+
+      <section id="panel-listings" class="panel"></section>
+      <section id="panel-claims-made" class="panel" hidden></section>
+      <section id="panel-claims-received" class="panel" hidden></section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Campus Lost and Found Portal — Sai University</span></div></footer>
+  <script type="module" src="/js/dashboard.js"></script>
+</body>
+</html>
